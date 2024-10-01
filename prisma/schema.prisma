@@ -18,6 +18,7 @@ model User {
   name      String
   email     String     @unique
   password  String
+  active    Boolean    @default(true)  
   createdAt DateTime   @default(now())
   courses   UserCourse[]
   progress  Progress[]
@@ -28,6 +29,7 @@ model Course {
   name        String
   description String?
   createdAt   DateTime   @default(now())
+  active    Boolean    @default(true)
   lessons     Lesson[]
   users       UserCourse[]
 }

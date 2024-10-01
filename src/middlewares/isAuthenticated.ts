@@ -1,5 +1,6 @@
 import { Response, Request, NextFunction } from 'express'
 import { verify } from 'jsonwebtoken'
+// import prismaClient from '../prisma'
 
 interface Payload {
     name: string
@@ -30,7 +31,19 @@ export function isAuthenticated(req: Request, res: Response, next: NextFunction)
         // injetar o id do usuário dentro do request
         // INPORTANTE, tem que criar o type dele sobscrevendo o do express
         req.user_id = sub
-        console.log(sub)
+        
+        // const userActive = prismaClient.user.findFirst({
+        //     where:{
+        //         id: sub,
+        //         active: true
+        //     }
+        // })
+
+        // console.log(userActive)
+
+        // if(!userActive){
+        //     return res.status(403).json({ error: 'Usuario desativado' })
+        // }
 
         return next()
 
