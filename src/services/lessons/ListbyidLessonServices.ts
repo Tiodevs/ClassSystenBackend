@@ -8,12 +8,15 @@ class ListbyidLessonServices {
     async execute({course_id}: UserReq){
 
         const userCurses = prismaClient.lesson.findMany({
-            where:{
+            where: {
                 courseId: course_id
             },
-            include:{
-                progress: true
-            }
+            orderBy: {
+                title: 'asc',
+            },
+            include: {
+                progress: true,
+            },
         })
 
         return userCurses

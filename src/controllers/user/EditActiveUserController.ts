@@ -4,7 +4,7 @@ import { EditActiveUserService } from "../../services/user/EditActiveUserService
 export class EditActiveUserController{
     async handle(req: Request, res: Response){
         
-        const user_id = req.user_id
+        const {user_id} = req.body
 
         const editActiveServices = new EditActiveUserService()
 

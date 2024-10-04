@@ -11,7 +11,6 @@ export class ListbyidLessonController{
         const listLessonsbyid = await listLessonbyidService.execute({
             course_id
         })
-
         return res.json(listLessonsbyid)
     }
 } 

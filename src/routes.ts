@@ -18,6 +18,7 @@ import { CreateLessonController } from './controllers/lesson/CreateLessonControl
 import { ListLessonController } from './controllers/lesson/ListLessonController'
 import { ListbyidLessonController } from './controllers/lesson/ListbyidLessonController'
 import { CreateProgressController } from './controllers/progresses/CreateProgressController'
+import { ListUserContoller } from './controllers/user/ListeUserController'
 const router = Router()
 
 // Configuração do envio de arquivos
@@ -39,6 +40,8 @@ router.post('/users/edit', isAuthenticated, new EditActiveUserController().handl
 router.post('/login', new AuthUserController().handle)
 // Pega os detalhes do usuario logado
 router.get('/me', isAuthenticated, new DetailUserController().handle)
+// Pega todos os usuarios e seus cursos
+router.get('/users', isAuthenticated, new ListUserContoller().handle)
 
 
 // COURSES //

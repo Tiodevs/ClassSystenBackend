@@ -2,11 +2,13 @@ import prismaClient from "../../prisma"
 
 interface LessonRequest {
   title: string,
-  course_id: string
+  course_id: string,
+  content: string,
+  url: string
 }
 
 class CreateLessonService {
-  async execute({ title, course_id }: LessonRequest) {
+  async execute({ title, course_id, content, url }: LessonRequest) {
 
     if (!title) {
       throw new Error("Não forneceu o name")
@@ -26,7 +28,9 @@ class CreateLessonService {
     const lesson = await prismaClient.lesson.create({
       data: {
         title: title,
-        courseId: course_id
+        courseId: course_id,
+        content: content,
+        url: url
       },
       select: {
         id: true,
