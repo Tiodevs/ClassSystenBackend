@@ -24,6 +24,7 @@ import { CreateEventController } from './controllers/events/CreateEventsControll
 import { ListEventController } from './controllers/events/ListEventsController'
 import { DeleteLessonController } from './controllers/lesson/DeleteLessonController'
 import { DeleteEventController } from './controllers/events/DeleteLessonController'
+import { DeleteUserCourseController } from './controllers/userCourses/DeleteUserCourseController'
 const router = Router()
 
 // Configuração do envio de arquivos
@@ -67,6 +68,8 @@ router.post('/users/course', isAuthenticated, new CreateUsercoursesController().
 router.post('/users/courseid', isAuthenticated, new ListbyidUsercoursesController().handle)
 //  Litsa todas as maticulas
 router.get('/users/course', isAuthenticated, new ListUsercoursesController().handle)
+//  Deleta o curso do user
+router.delete('/course/course', isAuthenticated, new DeleteUserCourseController().handle)
 
 
 //  LESSON  //
