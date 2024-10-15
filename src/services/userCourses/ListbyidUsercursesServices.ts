@@ -11,6 +11,9 @@ class ListabyidUsercoursesService {
         const userCurses = prismaClient.userCourse.findMany({
             where:{
                 userId: user_id
+            },
+            include:{
+                course: true
             }
         })
 
