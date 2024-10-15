@@ -8,6 +8,7 @@ interface Usercourse{
 class CreateUsercoursesService {
     async execute({user_id, course_id}: Usercourse){
 
+        console.log("user",user_id, "course",course_id)
         const userCourses = await prismaClient.userCourse.create({
             data:{
                 userId: user_id,
