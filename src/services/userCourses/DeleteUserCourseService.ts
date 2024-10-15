@@ -7,7 +7,7 @@ interface ItemRequest {
 class DeleteUserCurseService {
   async execute({ usercurse_id }: ItemRequest) {
 
-    console.log("chegou aqui")
+    console.log("usercurse_id")
       
     const userCurse = await prismaClient.userCourse.delete({
       where: {

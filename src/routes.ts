@@ -69,7 +69,7 @@ router.post('/users/courseid', isAuthenticated, new ListbyidUsercoursesControlle
 //  Litsa todas as maticulas
 router.get('/users/course', isAuthenticated, new ListUsercoursesController().handle)
 //  Deleta o curso do user
-router.delete('/course/course', isAuthenticated, new DeleteUserCourseController().handle)
+router.delete('/users/course', isAuthenticated, new DeleteUserCourseController().handle)
 
 
 //  LESSON  //
