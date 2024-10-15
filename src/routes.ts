@@ -23,6 +23,7 @@ import { EditActiveProgressController } from './controllers/progresses/EditActiv
 import { CreateEventController } from './controllers/events/CreateEventsController'
 import { ListEventController } from './controllers/events/ListEventsController'
 import { DeleteLessonController } from './controllers/lesson/DeleteLessonController'
+import { DeleteEventController } from './controllers/events/DeleteLessonController'
 const router = Router()
 
 // Configuração do envio de arquivos
@@ -77,7 +78,6 @@ router.get('/course/lesson', isAuthenticated, new ListLessonController().handle)
 //  Lista todos os cursos existentes
 router.post('/course/lessonbyid', isAuthenticated, new ListbyidLessonController().handle)
 //  Deleta a lissão e todos os progressos dela
-
 router.delete('/course/lesson', isAuthenticated, new DeleteLessonController().handle)
 
 
@@ -95,6 +95,7 @@ router.post('/course/progress/edit', isAuthenticated, new EditActiveProgressCont
 router.post('/course/events', isAuthenticated, new CreateEventController().handle)
 // Lista events byuser
 router.post('/course/events/list', isAuthenticated, new ListEventController().handle)
-
+// Delta eventos
+router.delete('/course/events', isAuthenticated, new DeleteEventController().handle)
 
 export { router }
