@@ -16,18 +16,22 @@ datasource db {
 model User {
   id        String     @id @default(uuid())
   name      String
+  adm       Boolean    @default(false)
+  photourl  String?    
   email     String     @unique
   password  String
   active    Boolean    @default(true)  
   createdAt DateTime   @default(now())
   courses   UserCourse[]
   progress  Progress[]
+  events  Event[]
 }
 
 model Course {
   id          String     @id @default(uuid())
   name        String
   description String?
+  banner    String?  
   createdAt   DateTime   @default(now())
   active    Boolean    @default(true)
   lessons     Lesson[]
@@ -68,4 +72,17 @@ model Progress {
 
   @@unique([userId, lessonId])
   @@map("progresses")
+}
+
+model Event {
+  id          String    @id @default(uuid())
+  title       String
+  date        String
+  place       String
+  duration    String
+  createdAt   DateTime   @default(now())
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String
+
+  @@map("events")
 }

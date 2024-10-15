@@ -5,10 +5,11 @@ interface UserRequest {
   name: string
   email: string
   password: string
+  photourl: string
 }
 
 class CreateUserService {
-  async execute({ name, email, password }: UserRequest) {
+  async execute({ name, email, password, photourl }: UserRequest) {
 
     if (!email) {
       throw new Error("E-mail incorreto")
@@ -37,7 +38,8 @@ class CreateUserService {
       data: {
         name: name,
         email: email,
-        password: hashedPassword
+        password: hashedPassword,
+        photourl: photourl
       },
       select: {
         id: true,

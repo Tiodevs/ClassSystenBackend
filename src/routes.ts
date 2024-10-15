@@ -19,6 +19,9 @@ import { ListLessonController } from './controllers/lesson/ListLessonController'
 import { ListbyidLessonController } from './controllers/lesson/ListbyidLessonController'
 import { CreateProgressController } from './controllers/progresses/CreateProgressController'
 import { ListUserContoller } from './controllers/user/ListeUserController'
+import { EditActiveProgressController } from './controllers/progresses/EditActiveCourseController'
+import { CreateEventController } from './controllers/events/CreateEventsController'
+import { ListEventController } from './controllers/events/ListEventsController'
 const router = Router()
 
 // Configuração do envio de arquivos
@@ -78,7 +81,15 @@ router.post('/course/lessonbyid', isAuthenticated, new ListbyidLessonController(
 // Criar uma nova lição
 router.post('/course/progress', isAuthenticated, new CreateProgressController().handle)
 // Desmarcar como completo
-router.post('/course/edit', isAuthenticated, new EditActiveCourseController().handle)
+router.post('/course/progress/edit', isAuthenticated, new EditActiveProgressController().handle)
+
+
+// EVENTS //
+
+// Criar um novo evento para user
+router.post('/course/events', isAuthenticated, new CreateEventController().handle)
+// Lista events byuser
+router.post('/course/events/list', isAuthenticated, new ListEventController().handle)
 
 
 export { router }

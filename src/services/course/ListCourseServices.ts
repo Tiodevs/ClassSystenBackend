@@ -6,6 +6,9 @@ class ListCourseService {
         const courses = await prismaClient.course.findMany({
             orderBy: {
                 name: 'asc',
+              },
+              include:{
+                lessons: true
               }
         })
     

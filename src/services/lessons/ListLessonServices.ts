@@ -7,6 +7,9 @@ class ListLessonService {
             
             orderBy: {
                 title: 'asc',
+            },
+            include:{
+                progress: true
             }
         })
     

@@ -2,11 +2,12 @@ import prismaClient from "../../prisma"
 
 interface CourseRequest {
   name: string
-  description: string
+  description: string,
+  banner?: string
 }
 
 class CreateCourseService {
-  async execute({ name, description }: CourseRequest) {
+  async execute({ name, description, banner }: CourseRequest) {
 
     if (!name) {
       throw new Error("Não forneceu o name")
@@ -15,6 +16,7 @@ class CreateCourseService {
       throw new Error("Nome a descrição")
     }
 
+    console.log(banner)
 
     const courseExists = await prismaClient.course.findFirst({
       where: {
@@ -30,7 +32,8 @@ class CreateCourseService {
     const course = await prismaClient.course.create({
       data: {
         name: name,
-        description: description
+        description: description,
+        banner: banner || null
       },
       select: {
         id: true,
