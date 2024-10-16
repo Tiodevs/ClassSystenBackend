@@ -13,7 +13,15 @@ class ListabyidUsercoursesService {
                 userId: user_id
             },
             include:{
-                course: true
+                course: {
+                    include:{
+                        lessons: {
+                            include:{
+                                progress: true
+                            }
+                        }
+                    }
+                }
             }
         })
 
