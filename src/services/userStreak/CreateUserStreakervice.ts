@@ -18,6 +18,8 @@ class CreateUserStreakService {
                 user: true
             }
         })
+
+        console.log("Streak criada")
         return userStreak
     }
 }

@@ -41,7 +41,7 @@ class UpdateUserStreakService {
               lastAccess: today,
             },
           });
-
+          console.log("Streak atualizada")
         return updatedStreak
     }
 }
