@@ -25,6 +25,8 @@ import { ListEventController } from './controllers/events/ListEventsController'
 import { DeleteLessonController } from './controllers/lesson/DeleteLessonController'
 import { DeleteEventController } from './controllers/events/DeleteLessonController'
 import { DeleteUserCourseController } from './controllers/userCourses/DeleteUserCourseController'
+import { CreateUserStreakController } from './controllers/userStreak/CreateUserStreakController'
+import { UpdateUserStreakController } from './controllers/userStreak/UpdateUserStreakController'
 const router = Router()
 
 // Configuração do envio de arquivos
@@ -100,5 +102,15 @@ router.post('/course/events', isAuthenticated, new CreateEventController().handl
 router.post('/course/events/list', isAuthenticated, new ListEventController().handle)
 // Delta eventos
 router.delete('/course/events', isAuthenticated, new DeleteEventController().handle)
+
+
+//  USER STREAK //
+
+// Criar um novo streak
+router.post('/user/streak', isAuthenticated, new CreateUserStreakController().handle)
+// Criar um novo streak
+router.put('/user/streak', isAuthenticated, new UpdateUserStreakController().handle)
+
+
 
 export { router }

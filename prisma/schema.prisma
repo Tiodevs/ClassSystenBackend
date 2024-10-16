@@ -25,6 +25,19 @@ model User {
   courses   UserCourse[]
   progress  Progress[]
   events  Event[]
+  Streak  UserStreak[]
+}
+
+model UserStreak {
+  id           String      @id @default(uuid())
+  currentStreak Int        @default(0)  // Dias consecutivos atuais
+  lastAccess   DateTime    @default(now())  // Último acesso registrado
+  maxStreak    Int         @default(0)  // Maior streak já atingido
+
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  
+  @@map("userstreaks")
 }
 
 model Course {
