@@ -9,7 +9,12 @@ class DetailUserService {
                 name: true,
                 email: true,
                 Streak: true,
-                adm: true
+                adm: true,
+                photourl:true,
+                active: true,
+                courses: true,
+                events: true,
+                progress: true
             }
         })
 
